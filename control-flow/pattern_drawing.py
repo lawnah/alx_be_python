@@ -1,6 +1,12 @@
-side = int(input("Enter the size of the pattern: "))
+size = int(input("Enter the size of the pattern:"))
 
-row_count = 0
-while row_count < side:
-    print("*" * side)
-    row_count += 1
+if size <= 0:
+    print("Size must be a positive integer.")
+    exit()
+
+row = 0
+while row < size:
+    for col in range(size):
+        print("*", end=" ")
+    print()
+    row +=1
