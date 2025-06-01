@@ -1,25 +1,28 @@
-num1 = int(input("Enter the first number: "))
-num2 = int(input("Enter the second number: "))
+
+try:
+    num1 = float(input("Enter the first number: "))
+    num2 = float(input("Enter the second number: "))
+except ValueError:
+    print("Invalid input. Please enter numbers only.")
+    exit()
 
 operation = input("Choose the operation (+, -, *, /): ")
 
-if operation == "+":
-    result = (num1 + num2)
-    print(f"The result is {result}")
-
-elif operation == "-":
-    result = (num1 - num2)
-    print(f"The result is {result}")
-
-elif operation == "*":
-    result = (num1 * num2)
-    print(f"The result is {result}")
-
-elif operation == "/":
-    while num2 > 0:
-        result = (num1 / num2)
+match operation:
+    case "+":
+        result = num1 + num2
         print(f"The result is {result}")
-        break
-    else: print("The divisor can not be 0")
-
-
+    case "-":
+        result = num1 - num2
+        print(f"The result is {result}")
+    case "*":
+        result = num1 * num2
+        print(f"The result is {result}")
+    case "/":
+        if num2 != 0:
+            result = num1 / num2
+            print(f"The result is {result}")
+        else:
+            print("Error: Division by zero is not allowed.")
+    case _:
+        print("Invalid operation. Please choose from +, -, *, /")
